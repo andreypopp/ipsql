@@ -44,20 +44,18 @@ class _Buffer(object):
         self.lines = lines or []
         self.current_statement = current_statement or None
 
-    def add_statement(self, line):
-        self.statements.append(sqlparse.parse(line))
-
     def add_line(self, line):
         splitted = sqlparse.split(line)
         for line in splitted:
             lines = self.lines + [line]
+            statement = sqlparse.parse("\n".join(lines))[0]
             if line.strip().endswith(";"):
-                self.statements.append(sqlparse.parse("\n".join(lines))[0])
+                self.statements.append(statement)
                 self.lines = []
                 self.current_statement = None
             else:
                 self.lines = lines
-                self.current_statement = sqlparse.parse("\n".join(lines))[0]
+                self.current_statement = statement
 
     @property
     def is_ready_for_exec(self):
