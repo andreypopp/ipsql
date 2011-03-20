@@ -1,0 +1,30 @@
+iPSQL design
+============
+
+This document specifies concept of intelligent PostgreSQL shell.
+
+Planned features
+----------------
+
+List of planned features:
+
+    * Vi-mode and Emacs-mode line editing facilities.
+
+    * Syntax highlighting.
+
+    * Contextual completion.
+
+    * Own parser for SQL with fallback to PostgreSQL parser (allow better
+      experiments with language).
+
+    * Better interface with pagers (search by columns, maybe).
+
+    * Better interface with editors (streamline completion).
+
+    * Alternative query syntax (HTSQL maybe?).
+
+    * Async operations.
+
+    * Configurable prompt.
+
+    * Possible macro support (loops, conditionals).
